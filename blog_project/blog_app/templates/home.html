@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    {% load static %}
+</head>
+<body>
+    <span>
+        <h3><a href="/logout">Logout</h3></a>
+    </span>
+    <h1>Hello {{request.session.name}}</h1>
+
+    <div class="post">
+        <h1>Feel Free To Share Something With The World!</h1>
+        <form action="/post_blog" method="POST">
+            {% csrf_token %}
+            <textarea id="freeform" name="blog_text" rows="10" cols="55">
+                Whats On Your Mind?
+                </textarea>
+            <input class="submit" type="submit" value="post">
+        </form>
+    </div>
+</body>
+</html>

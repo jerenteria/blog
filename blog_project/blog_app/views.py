@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
+from django.contrib import messages
 
 def index(request):
     return render(request, "index.html")
@@ -33,13 +34,25 @@ def login(request):
             if logged_user.password == request.POST['password']:
                 request.session['user_id'] = logged_user.id
                 request.session['name'] = f"{logged_user.first_name} {logged_user.last_name}"
-                return redirect('/render_home')
+                return redirect('/home')
             else:
                 messages.error(request, "Incorrect Password")
         else:
             messages.error(request, "Email does not exits")
+    return redirect('/home')
+
+def logout(request):
+    request.session.clear()
     return redirect('/')
 
-
 def render_home(request):
-    return render(request, "home.html")
+    context = {
+        'all_posts': Post.objects.all()
+    }
+    return render(request, "home.html", context) 
+
+def submit_post(request, post_id):
+    if request.method == "POST":
+        new_post = Post.objects.create(content=request.POST['content'], creator=User.objects.get(id=request.session['user_id']))
+        print(new_post)
+        return redirect('/home')
