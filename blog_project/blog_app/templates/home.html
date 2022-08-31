@@ -17,7 +17,8 @@
         <form action="/post_blog" method="POST">
             {% csrf_token %}
             <textarea id="freeform" name="blog_text" rows="10" cols="55">
-                Whats On Your Mind?
+                Whats On Your Mind? <br>
+                Tell Us!
                 </textarea>
             <input class="submit" type="submit" value="post">
         </form>
