@@ -16,12 +16,16 @@
         <h1>Feel Free To Share Something With The World!</h1>
         <form action="/post_blog" method="POST">
             {% csrf_token %}
-            <textarea id="freeform" name="blog_text" rows="10" cols="55">
-                Whats On Your Mind? <br>
-                Tell Us!
-                </textarea>
-            <input class="submit" type="submit" value="post">
+            <h2>Tell Us Something!</h2>
+            <textarea name="content" rows="10" cols="45">
+            </textarea>
+            <button>Submit</button>
         </form>
     </div>
+
+    {% for post in all_posts %}
+    <h3>{{post.creator.first_name}} shared:</h3>
+    <p>{{post.content}}</p>
+    {% endfor %}
 </body>
 </html>

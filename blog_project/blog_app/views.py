@@ -51,8 +51,11 @@ def render_home(request):
     }
     return render(request, "home.html", context) 
 
-def submit_post(request, post_id):
+def submit_post(request):
     if request.method == "POST":
-        new_post = Post.objects.create(content=request.POST['content'], creator=User.objects.get(id=request.session['user_id']))
+        new_post = Post.objects.create(
+        content=request.POST['content'],
+        creator=User.objects.get(id=request.session['user_id'])
+        )
         print(new_post)
-        return redirect('/home')
+    return redirect('/home')
