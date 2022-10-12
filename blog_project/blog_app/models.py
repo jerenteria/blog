@@ -33,3 +33,9 @@ class Post(models.Model):
     creator = models.ForeignKey(User, related_name="created_post", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+class Response(models.Model):
+    text = models.CharField(max_length=255)
+    responder = models.ForeignKey(User, related_name="responded_post", on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

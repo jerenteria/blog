@@ -22,10 +22,27 @@
             <button>Submit</button>
         </form>
     </div>
+    
 
     {% for post in all_posts %}
     <h3>{{post.creator.first_name}} shared:</h3>
     <p>{{post.content}}</p>
+    <p>{{post.created_at}}</p>
+
+    {% if all_replies %}
+    <p>{{response.responder.first_name}} replied to your comment:</p>
+    <p>{{response.text}}</p>
+    {% endif %}
+
+
+
+
+    <form action="/reply" method="POST">
+        {% csrf_token %}
+        <input type="text" placeholder="reply" name="text">
+        <button>Reply</button>
+    </form>
+    
     {% endfor %}
 </body>
 </html>

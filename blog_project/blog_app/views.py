@@ -47,7 +47,8 @@ def logout(request):
 
 def render_home(request):
     context = {
-        'all_posts': Post.objects.all()
+        'all_posts': Post.objects.all(),
+        'all_replies': Response.objects.all(),
     }
     return render(request, "home.html", context) 
 
@@ -58,4 +59,13 @@ def submit_post(request):
         creator=User.objects.get(id=request.session['user_id'])
         )
         print(new_post)
+    return redirect('/home')
+
+def reply(request):
+    if request.method == "POST":
+        new_reply = Response.objects.create(
+            text = request.POST['text'],
+            responder=User.objects.get(id=request.session['user_id'])
+        )
+        print(new_reply)
     return redirect('/home')
