@@ -48,9 +48,9 @@ def logout(request):
 def render_home(request):
     context = {
         'all_posts': Post.objects.all(),
-        'all_replies': Response.objects.all(),
     }
-    return render(request, "home.html", context) 
+    one_reply = Response.objects.count()
+    return render(request, "home.html", context)
 
 def submit_post(request):
     if request.method == "POST":
