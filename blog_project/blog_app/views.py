@@ -48,7 +48,6 @@ def logout(request):
 def render_home(request):
     context = {
         'all_posts': Post.objects.all(),
-        'all_replies': Response.objects.all()
     }
     return render(request, "home.html", context)
 
@@ -70,3 +69,7 @@ def reply(request):
         )
         print(new_reply)
     return redirect('/home')
+
+def get_one_reply(request):
+    one_response = Response.objects.get(text) 
+    return render("home.html")
