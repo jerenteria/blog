@@ -27,16 +27,15 @@ class User(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
 
+class Response(models.Model):
+    text = models.CharField(max_length=255)
+    responder = models.ForeignKey(User, related_name="responded_post", on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
 class Post(models.Model):
     content = models.CharField(max_length=255)
     creator = models.ForeignKey(User, related_name="created_post", on_delete=models.CASCADE)
-    reply = models.ForeignKey('self', null=True, related_name="replies", on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-class Response(models.Model):
-    text = models.CharField(max_length=255)
-    responder = models.ForeignKey(User, related_name="responded_post", on_delete=models.CASCADE)
+    reply = models.ManyToManyField(Response, null=True, related_name="replies")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

@@ -29,12 +29,9 @@
     <p>{{post.content}}</p>
     <p>{{post.created_at}}</p>
 
-    {% if one_response %}
-    <p>{{response.responder.first_name}} replied to your comment:</p>
-    <p>{{response.text}}</p>
-    {% endif %}
-
-
+    {% for reply in all_replies %}
+        {{post.reply.text}}
+    {% endfor %}
 
 
     <form action="/reply" method="POST">
@@ -44,5 +41,6 @@
     </form>
     
     {% endfor %}
+
 </body>
 </html>
