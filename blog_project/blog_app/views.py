@@ -48,6 +48,7 @@ def logout(request):
 def render_home(request):
     context = {
         'all_posts': Post.objects.all(),
+        'all_replies': Response.objects.all()
     }
     return render(request, "home.html", context)
 
@@ -58,6 +59,9 @@ def submit_post(request):
         content=request.POST['content'],
         creator=User.objects.get(id=request.session['user_id'])
         )
+        reply_id = request.POST.get('post_id')
+        if reply_id:
+            reply_qs = Post.objects.get(id=reply_id)
         print(new_post)
     return redirect('/home')
 
@@ -71,5 +75,7 @@ def reply(request):
     return redirect('/home')
 
 def get_one_reply(request):
-    one_response = Response.objects.get(text) 
+    one_response = Response.objects.get(response) 
+    for words in Response:
+        return one_response.text
     return render("home.html")
