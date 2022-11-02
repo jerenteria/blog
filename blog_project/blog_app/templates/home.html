@@ -29,10 +29,13 @@
     <p>{{post.content}}</p>
     <p>{{post.created_at}}</p>
 
-    {% for reply in all_replies %}
-        {{post.reply.text}}
-    {% endfor %}
+        {% for reply in all_replies %}
+            {{post.response}}
+        {% endfor %}
 
+        {% for response in all_replies %}
+            {{response.reply}}
+        {% endfor %}
 
     <form action="/reply" method="POST">
         {% csrf_token %}
