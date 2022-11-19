@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
     <title>Home</title>
     {% load static %}
 </head>
@@ -29,13 +30,15 @@
     <p>{{post.content}}</p>
     <p>{{post.created_at}}</p>
 
-        {% for reply in all_replies %}
-            {{post.response}}
-        {% endfor %}
 
-        {% for response in all_replies %}
-            {{response.reply}}
-        {% endfor %}
+            {{post.text}}
+        <!-- one response -->
+        <p id="replies">
+            {% for response in all_replies %}
+                {{response.responder.first_name}}
+                {{response.text}}
+            {% endfor %}
+        </p>
 
     <form action="/reply" method="POST">
         {% csrf_token %}

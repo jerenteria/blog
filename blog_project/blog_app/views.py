@@ -68,7 +68,6 @@ def reply(request):
         new_reply = Response.objects.create(
             text = request.POST['text'],
             responder=User.objects.get(id=request.session['user_id']),
-            # reply = Post.objects.get(id=request.session['user_id'])
         )
         print(new_reply)
     return redirect('/home')
