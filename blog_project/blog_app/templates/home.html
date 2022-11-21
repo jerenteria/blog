@@ -36,6 +36,7 @@
         <p id="replies">
             {% for response in all_replies %}
                 {{response.responder.first_name}}
+                <br>
                 {{response.text}}
             {% endfor %}
         </p>
