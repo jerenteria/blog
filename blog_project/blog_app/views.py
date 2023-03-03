@@ -72,8 +72,6 @@ def reply(request):
         print(new_reply)
     return redirect('/home')
 
-# def get_one_reply(request):
-#     one_response = Response.objects.get(response) 
-#     for words in Response:
-#         return one_response.text
-#     return render("home.html")
+def get_one_reply(request):
+    one_response = Response.objects.filter(replies) 
+    return one_response

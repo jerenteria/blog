@@ -32,16 +32,22 @@
         <p>{{post.created_at}}</p>
 
 
-                {{post.text}}
             <!-- one response -->
-            <p id="replies">
+            <!-- <p id="replies">
                 {% for response in all_replies %}
                 <h3>New Response</h3>
                     {{response.responder.first_name}}
                     <br>
                     {{response.text}}
                 {% endfor %}
-            </p>
+            </p> -->
+
+
+            {% for replies in one_response  %}
+                {{replies}}
+                {{Response.reply}}
+            {% endfor %}
+
 
         <form action="/reply" method="POST">
             {% csrf_token %}
