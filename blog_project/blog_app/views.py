@@ -69,9 +69,10 @@ def reply(request):
             text = request.POST['text'],
             responder=User.objects.get(id=request.session['user_id']),
         )
-        print(new_reply)
     return redirect('/home')
 
 def get_one_reply(request):
-    one_response = Response.objects.filter(replies) 
-    return one_response
+    one_response = Response.objects.get(id="reply_id") 
+    for replies in one_response:
+        print(replies)
+        return replies
