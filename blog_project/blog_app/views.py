@@ -59,7 +59,6 @@ def submit_post(request):
         content=request.POST['content'],
         creator=User.objects.get(id=request.session['user_id'])
         )
-        reply_id = request.POST.get('post_id')
         print(new_post)
     return redirect('/home')
 
@@ -73,6 +72,4 @@ def reply(request):
 
 def get_one_reply(request):
     one_response = Response.objects.get(id="reply_id") 
-    for replies in one_response:
-        print(replies)
-        return replies
+    return (id)

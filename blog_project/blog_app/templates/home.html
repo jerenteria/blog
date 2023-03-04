@@ -32,7 +32,6 @@
         <p>{{post.created_at}}</p>
 
 
-            <!-- one response -->
             <p id="replies">
                 {% for response in all_replies %}
                 <h3>New Response</h3>
@@ -40,13 +39,8 @@
                     <br>
                     {{response.text}}
                 {% endfor %}
-            </p>
+            </p> 
 
-
-            {% for replies in one_response  %}
-                {{post.reply}}
-                {{Response.reply}}
-            {% endfor %}
 
 
         <form action="/reply" method="POST">
