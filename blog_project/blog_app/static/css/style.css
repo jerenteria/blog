@@ -1,3 +1,6 @@
+* {
+    padding: 0;
+}
 #replies {
     font-size: 20px;
 }
@@ -6,4 +9,14 @@
     text-align: center;
     background-color: antiquewhite;
     font-family: "Rockwell";
+}
+
+body {
+    background-color: red;
+}
+
+section {
+    background-color: green;
+    text-align: center;
+    background-repeat: no-repeat;
 }
