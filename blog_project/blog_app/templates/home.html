@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style2.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple">
 
     <title>Home</title>
@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <span>
-            <h3><a href="/logout">Logout</h3></a>
+            <h3 class="logout"><a href="/logout">Logout</h3></a>
         </span>
         <h1>Hello {{request.session.name}}</h1>
 
@@ -27,14 +27,13 @@
             </form>
         </div>
         
+            {% for post in all_posts %}
+            <h3>{{post.creator.first_name}} shared:</h3>
+            <p>{{post.content}}</p>
+            <p>{{post.created_at}}</p>    
 
-        {% for post in all_posts %}
-        <h3>{{post.creator.first_name}} shared:</h3>
-        <p>{{post.content}}</p>
-        <p>{{post.created_at}}</p>
 
-
-            <p id="replies">
+            <p class="replies">
                 {% for response in all_replies %}
                 <h3>New Response</h3>
                     {{response.responder.first_name}}

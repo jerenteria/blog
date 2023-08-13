@@ -1,0 +1,13 @@
+.container {
+    text-align: center;
+    font-family: "Rockwell";
+}
+
+.logout {
+    position: fixed;
+    right: 15px;
+}
+
+.replies {
+    font-size: 20px;
+}

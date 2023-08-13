@@ -1,26 +1,25 @@
-#replies {
-    font-size: 20px;
-}
-
-.container {
-    text-align: center;
-    background-color: antiquewhite;
-    font-family: "Rockwell";
+* {
+    padding: 0px;
 }
 
 body {
-    background-color: red;
+    background: url("background2.jpg")no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 section {
-    background-color: green;
     text-align: center;
-    background-repeat: no-repeat;
+    background: transparent;
     padding: 10px;
     margin: 130px 60px 40px 60px;
     border: thick solid white;
     border-radius: 50px;
     height: fit-content;
+}
+
+label {
+    font-size: 25px;
 }
 
 input {
