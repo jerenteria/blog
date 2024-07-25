@@ -48,7 +48,7 @@ def logout(request):
 def render_home(request):
     context = {
         'all_posts': Post.objects.all(),
-        'all_replies': Response.objects.all()
+        'all_replies': Response.objects.all().order_by('-created_at')
     }
     return render(request, "home.html", context)
 
@@ -62,14 +62,14 @@ def submit_post(request):
         print(new_post)
     return redirect('/home')
 
-def reply(request):
+def reply(request, post_id):
     if request.method == "POST":
+        # post_id is automatically created with django when a new object is created and saved to database(bc it inherits from models.Model which by defauly creates an auto-incrementing integer key field called 'id if you dont specify one')
+        post = Post.objects.get(id=post_id) # retreving the post that you want to reply to(by getting the post_id)
         new_reply = Response.objects.create(
             text = request.POST['text'],
             responder=User.objects.get(id=request.session['user_id']),
+            # first post is the field name in object Response if i would've named it "related_post" I wouldve put related_post = post instead
+            post = post # first post refers to the field name in Response model, second post refers to the Post object you just retrieved(basically saying this response belong to this post)
         )
     return redirect('/home')
-
-def get_one_reply(request):
-    one_response = Response.objects.get(id="reply_id") 
-    return (id)

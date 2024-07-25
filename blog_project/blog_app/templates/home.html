@@ -34,7 +34,7 @@
 
 
             <p class="replies">
-                {% for response in all_replies %}
+                {% for response in post.comments.all %}
                 <h3>New Response</h3>
                     {{response.responder.first_name}}
                     <br>
@@ -44,7 +44,7 @@
 
 
 
-        <form action="/reply" method="POST">
+        <form action="/reply/{{post.id}}" method="POST">
             {% csrf_token %}
             <input type="text" placeholder="reply" name="text">
             <button>Reply</button>

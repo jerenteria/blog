@@ -42,9 +42,7 @@ class Post(models.Model):
 class Response(models.Model):
     text = models.CharField(max_length=255, null=True)
     post = models.ForeignKey(Post, related_name="comments", null=True, on_delete=models.CASCADE)
-    responder = models.CharField(max_length=255)
-    # responder = models.ForeignKey(User, related_name="responders", on_delete=models.CASCADE)
-    reply = models.ForeignKey(Post, null=True, related_name="replies", on_delete=models.CASCADE)
+    responder = models.ForeignKey(User, related_name="responders", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
