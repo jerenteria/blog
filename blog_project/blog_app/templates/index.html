@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Rancho&effect=outline" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Rancho&effect=outline"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" />
     <title>Welcome</title>
     {% load static %}
-</head>
+  </head>
 
-<body>
-    <section>
-        <div class="form">
-            <h1 class="font-effect-outline">Register!</h1>
-            <form action="/register" method="POST">
-                {% csrf_token %}
-                <label>First Name</label>
-                <input type="text" name="f_n">
-                <label>Last Name</label>
-                <input type="text" name="l_n">
-                <label>Email</label>
-                <input type="email" name="email">
-                <label>Password</label>
-                <input type="password" name="password">
-                <label>Confirm Password</label>
-                <input type="password" name="confirm_password">
-                <input class="submit" type="submit" value="register">
-            </form>
+  <body>
+    <div class="container">
+      <section class="register-section">
+        <div class="register">
+          <h1>Register!</h1>
+          <form action="/register" method="POST">
+            {% csrf_token %}
+            <input type="text" name="f_n" placeholder="First Name" />
+            <input type="text" name="l_n" placeholder="Last Name" />
+            <input type="email" name="email" placeholder="Email" />
+            <input type="password" name="password" placeholder="Password" />
+            <input
+              type="password"
+              name="confirm_password"
+              placeholder="Confirm Password"
+            />
+            <button class="submit" type="submit" value="Register">Register</button>
+          </form>
         </div>
+      </section>
 
-        <div class="form">
-            <h1>Log In</h1>
-            <form action="/login" method="POST">
-                {% csrf_token %}
-                <label>Email:</label>
-                <input type="email" name="email">
-                <label>Password:</label>
-                <input type="password" name="password">
-                <input class="submit" type="submit" value="login">
-            </form>
+      <section class="login-section">
+        <div class="login">
+          <h1>Log In</h1>
+          <form action="/login" method="POST">
+            {% csrf_token %}
+            <input type="email" name="email" placeholder="Email" />
+            <input type="password" name="password" placeholder="Password" />
+            <button class="submit" type="submit" value="login">LogIn</button>
+          </form>
         </div>
-    </section>
-</body>
-
+      </section>
+    </div>
+  </body>
 </html>

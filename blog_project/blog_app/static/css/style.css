@@ -1,29 +1,62 @@
 * {
-    padding: 0px;
+    padding: 0;
+    margin: 0;
 }
 
-body {
-    background: url("background2.jpg")no-repeat;
-    background-position: center;
-    background-size: cover;
+.container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1000px; 
+    margin-top: 15%;
+    margin-left: 20%;
+    padding: 20px;
 }
 
-section {
-    text-align: center;
-    background: transparent;
-    padding: 10px;
-    margin: 130px 60px 40px 60px;
-    border: thick solid white;
-    border-radius: 50px;
-    height: fit-content;
+
+
+.register-section,
+.login-section {
+  flex: 1;
+  padding: 20px;
 }
 
-label {
-    font-size: 25px;
+.register-section {
+  margin-right: 20px; /* Creates space between the sections */
 }
 
-input {
-    display: block;
-    margin-left: 860px;
-    margin-bottom: 10px;
+.register form, 
+.login form {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    margin-left: 30px;
+    margin-top: 10px;
+    padding: 16px;
+    font-size: 1.2rem;
+    border-radius: 22px;
+    background-image: linear-gradient(to right, rgb(134, 66, 134), rgb(255, 153, 170));
+}
+
+
+.register input,
+.login input {
+  margin-bottom: 10px;
+  padding: 8px;
+  width: 100%;
+}
+
+
+
+/* For smaller screens, stack the sections vertically */
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+  }
+
+  .register-section {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 }
