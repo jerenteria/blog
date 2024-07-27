@@ -4,53 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="static/css/style2.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple">
 
     <title>Home</title>
     {% load static %}
 </head>
 <body>
-    <div class="container">
-        <span>
+    <div class="container">      
+        <header class="header">
+            <h1>Hello {{request.session.name}} 👋🏼</h1>
             <h3 class="logout"><a href="/logout">Logout</h3></a>
-        </span>
-        <h1>Hello {{request.session.name}}</h1>
+        </header>
 
-        <div class="post">
-            <h1>Feel Free To Share Something With The World!</h1>
+
+        <div class="post-input">
+            <h1 class="share-something">Share Something With The World!</h1>
             <form action="/post_blog" method="POST">
                 {% csrf_token %}
-                <h2>Tell Us Something!</h2>
-                <textarea name="content" rows="10" cols="45">
+                <textarea name="content" rows="10" cols="53">
                 </textarea>
-                <button>Submit</button>
+                <button class="text-area-btn">Submit</button>
             </form>
         </div>
         
-            {% for post in all_posts %}
-            <h3>{{post.creator.first_name}} shared:</h3>
-            <p>{{post.content}}</p>
-            <p>{{post.created_at}}</p>    
+        <div class="posts-container">
+            <div class="posts">
+                {% for post in all_posts %}
+                <h3 class="post-creator">{{post.creator.first_name}} shared:</h3>
+                <p class="post-content">{{post.content}}</p>
+                <p class="post-created-at">@ {{post.created_at}}</p>    
 
 
-            <p class="replies">
-                {% for response in post.comments.all %}
-                <h3>New Response</h3>
-                    {{response.responder.first_name}}
-                    <br>
-                    {{response.text}}
+                <p class="replies">
+                    {% for response in post.comments.all %}
+                    <h3 class="new-response">New Response</h3>
+                        <p class="responder-name">{{response.responder.first_name}} said: {{response.text}} </p>
+                    {% endfor %}
+                </p>
+
+                <form action="/reply/{{post.id}}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" placeholder="Reply to this comment" name="text" id="reply-input">
+                    <button type="submit" class="reply-btn">Reply</button>
+                </form>
                 {% endfor %}
-            </p> 
-
-
-
-        <form action="/reply/{{post.id}}" method="POST">
-            {% csrf_token %}
-            <input type="text" placeholder="reply" name="text">
-            <button>Reply</button>
-        </form>
+            </div>
+        </div>
         
-        {% endfor %}
+
     </div>
 </body>
 </html>

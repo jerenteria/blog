@@ -1,13 +1,128 @@
-.container {
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+    background: linear-gradient(to right, lightgray, gray);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  background: black;
+}
+
+.header h1 {
+  font-size: 42px;
+  margin-left: 40%;
+  background: linear-gradient(to right, rgb(134, 66, 134), rgb(255, 153, 170));
+  color: transparent;
+  background-clip: text;
+}
+
+.logout a {
+  font-size: 32px;
+  background: linear-gradient(to right, rgb(134, 66, 134), rgb(255, 153, 170));
+  color: transparent;
+  background-clip: text;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.share-something {
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+textarea {
+    margin-left: 7.2rem;
+    outline: none;
+}
+
+.text-area-btn {
+  padding: 8px;
+  border-radius: 7px;
+  background-image: linear-gradient(to right, rgb(134, 66, 134), rgb(255, 153, 170));
+  width: 7rem;
+  font-size: 1.2rem;
+  transition: 0.5s;
+}
+
+.text-area-btn:hover {
+    transform: translateY(-8px);
+    background: purple;
+    color: white;
+}
+
+.post-input {
+    margin-bottom: 20px;
+    margin-bottom: 2rem;
     text-align: center;
-    font-family: "Rockwell";
 }
 
-.logout {
-    position: fixed;
-    right: 15px;
+.posts-container {
+    background: lightgray;
+    margin-left: 700px;
+    margin-right: 700px;
+    border-radius: 12px;
+    padding: 40px;
 }
 
-.replies {
+.posts {
+    text-align: center;
+}
+
+.post-content {
+    font-size: 2.5rem;
+}
+
+.post-created-at {
     font-size: 20px;
 }
+
+.post-creator {
+    font-size: 1.5rem;
+}
+
+.new-response {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.responder-name {
+    font-size: 2rem;
+}
+
+.response-content {
+    font-size: 2.5rem;
+}
+
+#reply-input {
+    margin-top: 6px;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 11px;
+    outline: none;
+}
+
+.reply-btn {
+    background-image: linear-gradient(to right, rgb(134, 66, 134), rgb(255, 153, 170));
+    font-size: 1.2rem;
+    width: 6rem;
+    padding: 8px;
+    border-radius: 11px;
+    transition: 0.5s;
+}
+
+.reply-btn:hover {
+    transform: translateY(-8px);
+    background: purple;
+    color: white;
+}
+
